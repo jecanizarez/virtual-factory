@@ -1,8 +1,8 @@
-FROM debian:bullseye-20211201
+FROM debian:bookworm
 # Ref https://github.com/thiagoralves/OpenPLC_v3/blob/master/Dockerfile
 
 # Install applications
-RUN apt-get update && apt-get -y install git sqlite3 && apt-get clean
+RUN apt-get update && apt-get -y install git sqlite3 python3 dos2unix && apt-get clean
 
 # Install OpenPLC_v3
 RUN git clone https://github.com/thiagoralves/OpenPLC_v3.git
@@ -13,6 +13,7 @@ RUN ./install.sh docker
 RUN mkdir /OpenPLC_v3/scripts
 
 ADD entrypoint.sh /OpenPLC_v3
+RUN dos2unix /OpenPLC_v3/entrypoint.sh
 
 EXPOSE 502
 EXPOSE 8080
