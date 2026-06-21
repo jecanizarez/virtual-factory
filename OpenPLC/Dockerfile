@@ -7,6 +7,7 @@ RUN apt-get update && apt-get -y install git sqlite3 python3 dos2unix && apt-get
 # Install OpenPLC_v3
 RUN git clone https://github.com/thiagoralves/OpenPLC_v3.git
 WORKDIR /OpenPLC_v3
+RUN git checkout b5d41356dab4aeadca0dd7ca64ba542f870b595d
 RUN ./install.sh docker
 
 # copy PLC script and database script over
