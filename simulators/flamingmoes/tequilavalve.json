@@ -19,6 +19,7 @@
   ],
   "tequilavalve": {
     "type": "valve",
+    "tick_interval_seconds": 5,
     "logging": {
       "logging": true,
       "type": "opensearch",
@@ -27,7 +28,7 @@
         "port": 9200,
         "user": "admin",
         "password": "admin",
-        "use_ssl": false,
+        "use_ssl": true,
         "verify_certs": false,
         "index": "factory-log-tequilavalve",
         "max_size_cache": 10

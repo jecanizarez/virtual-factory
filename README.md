@@ -46,6 +46,7 @@ current supported connectors:
 - **simulator_names**: -> list of simulator names, although it is a list, my advice is to use one, otherwise they will share an IP address and it is not so realistic.
 
 - **for simulator_name in simulator names**: -> we must inform the following fields
+- **tick_interval_seconds**: -> (optional) integer determining the simulation step frequency (in seconds). Increase this value to slow down data generation and lower the logging rate (default is 1).
 - type: 
   - tank
   - tap

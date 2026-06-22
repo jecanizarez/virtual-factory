@@ -19,6 +19,7 @@
   ],
   "gin": {
     "type": "Tap",
+    "tick_interval_seconds": 5,
     "outputs": [
       "ginvalve"
     ],

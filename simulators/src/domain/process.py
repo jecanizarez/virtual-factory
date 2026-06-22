@@ -7,7 +7,8 @@ from src.domain.runable import RunAble
 class Process(RunAble, Industrial):
 
     def __init__(self, params: dict):
-        RunAble.__init__(self)
+        tick_interval = params.get("tick_interval_seconds", 1)
+        RunAble.__init__(self, tick_interval_seconds=tick_interval)
         Industrial.__init__(self, params)
 
     def run_thread(self):

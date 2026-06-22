@@ -5,9 +5,10 @@ from time import sleep
 
 class RunAble:
 
-    def __init__(self):
+    def __init__(self, tick_interval_seconds=1):
         self._thread = Thread(target=self._run, daemon=True)
         self._running = False
+        self._tick_interval_seconds = tick_interval_seconds
 
     def start(self):
         self._running = True
@@ -30,6 +31,6 @@ class RunAble:
         while self._running:
             try:
                 self.run_thread()
-                sleep(1)
+                sleep(self._tick_interval_seconds)
             except KeyboardInterrupt:
                 self._running = False

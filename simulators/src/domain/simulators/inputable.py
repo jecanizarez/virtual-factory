@@ -23,7 +23,9 @@ class InputAble(Simulator):
             # aquí solo sumamos los outputs de cada input
             for _input in self._inputs:
                 if not _input.get_output_blocked():
-                    calc_input_level += _input.get_output_level()
+                    out_level = _input.get_output_level()
+                    if out_level is not None:
+                        calc_input_level += out_level
         # solo va a poder tener el máximo que acepta
         self.current_input_level = calc_input_level if calc_input_level <= self.input_level else self.input_level
 
