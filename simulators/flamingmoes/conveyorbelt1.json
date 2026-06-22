@@ -19,6 +19,7 @@
   ],
   "conveyorbelt1": {
     "type": "conveyorbelt",
+    "tick_interval_seconds": 5,
     "inputs": [
       "recolectorvalve"
     ],
