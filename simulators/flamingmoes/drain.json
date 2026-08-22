@@ -19,6 +19,7 @@
   ],
   "drain": {
     "type": "drain",
+    "tick_interval_seconds": 5,
     "inputs": [
       "conveyorbelt1"
     ]

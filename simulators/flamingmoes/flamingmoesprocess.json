@@ -12,6 +12,7 @@
   ],
   "flamingmoes": {
     "type": "flamingmoes",
+    "tick_interval_seconds": 5,
     "mapper_industry_properties": {
       "write": {
         "tequila_valve_open": {
@@ -51,15 +52,15 @@
           "type": "coil"
         },
         "mixtank1_heat_cool_level": {
-          "map":109,
+          "map": 109,
           "type": "register"
         },
         "mixtank2_heat_cool_level": {
-          "map":119,
+          "map": 119,
           "type": "register"
         },
         "recolector_heat_cool_level": {
-          "map":129,
+          "map": 129,
           "type": "register"
         },
         "bottleon": {
@@ -73,27 +74,27 @@
           "type": "coil"
         },
         "mixtank1_capacity": {
-          "map":100,
+          "map": 100,
           "type": "uregister"
         },
         "mixtank1_temp": {
-          "map":108,
+          "map": 108,
           "type": "register"
         },
         "mixtank2_capacity": {
-          "map":110,
+          "map": 110,
           "type": "uregister"
         },
         "mixtank2_temp": {
-          "map":118,
+          "map": 118,
           "type": "register"
         },
         "recolector_capacity": {
-          "map":120,
+          "map": 120,
           "type": "uregister"
         },
         "recolector_temp": {
-          "map":128,
+          "map": 128,
           "type": "register"
         }
       }

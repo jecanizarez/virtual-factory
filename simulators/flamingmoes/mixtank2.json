@@ -19,6 +19,7 @@
   ],
   "mixtank2": {
     "type": "tank",
+    "tick_interval_seconds": 5,
     "inputs": [
       "brandyvalve",
       "ginvalve",
@@ -36,7 +37,7 @@
         "port": 9200,
         "user": "admin",
         "password": "admin",
-        "use_ssl": false,
+        "use_ssl": true,
         "verify_certs": false,
         "index": "factory-log-tank2",
         "max_size_cache": 10

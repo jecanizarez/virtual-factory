@@ -11,12 +11,14 @@ from src.domain.simulators.loggable import Loggable
 class Simulator(RunAble, Notifier, Industrial, Buggable, Loggable):
 
     def __init__(self, params: dict):
-        RunAble.__init__(self)
+        tick_interval = params.get("tick_interval_seconds", 1)
+        RunAble.__init__(self, tick_interval_seconds=tick_interval)
         Notifier.__init__(self, params)
         Industrial.__init__(self, params)
         Buggable.__init__(self, params)
         Loggable.__init__(self, params)
-        self._dont_log_variables = ['_thread', '_running', '_simulator_connector_client',
+        self._dont_log_variables = ['_thread', '_running', '_tick_interval_seconds',
+                                    '_simulator_connector_client',
                                     '_industrial_client',
                                     '_dont_log_variables',
                                     '_logger_element',

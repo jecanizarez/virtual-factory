@@ -12,12 +12,15 @@ RUN apt-get install -y --allow-unauthenticated unixodbc-dev && apt-get clean && 
 # Create app directory
 WORKDIR /usr/src/app
 
-RUN git clone https://github.com/frangoteam/FUXA.git
+RUN git clone --depth 1 --branch v1.3.2 https://github.com/frangoteam/FUXA.git
 WORKDIR /usr/src/app/FUXA
 
 # Install server
 WORKDIR /usr/src/app/FUXA/server
 RUN npm install
+
+# Install modbus driver (not declared as a dependency in FUXA v1.3.2 package.json)
+RUN npm install modbus-serial
 
 # Workaround for sqlite3 https://stackoverflow.com/questions/71894884/sqlite3-err-dlopen-failed-version-glibc-2-29-not-found
 RUN apt-get update -y || true
