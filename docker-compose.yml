@@ -431,6 +431,27 @@ services:
       - simulators
     depends_on:
       - opensearch
+  # CAI pentest agent (Cybersecurity AI framework).
+  # Start standalone:  docker compose up -d cai
+  # Attach:            docker compose exec -it cai cai "your prompt"
+  cai:
+    build: ./cai
+    stdin_open: true
+    tty: true
+    command: /bin/sh -c "while sleep 3600; do :; done"
+    env_file:
+      - path: cai/.env
+        required: false
+    volumes:
+      - ./cai/workspace:/root/.cai
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+      - NET_RAW
+    privileged: true
+    networks:
+      - ot
+      - simulators
 networks:
   ot:
     driver: bridge
