@@ -31,6 +31,59 @@ docker-compose up
 - Openplc interface: http://localhost:8080  (openplc:openplc)
 - Fuxa interface: http://localhost:1881
 
+## CAI pentest agent
+
+The network includes a dockerized [CAI](https://github.com/aliasrobotics/cai) (Cybersecurity AI) agent used to perform penetration tests against the factory. It is attached to both docker networks (`ot` and `simulators`), so it can reach the PLC, the HMI, the MQTT broker, OpenSearch and all the simulators. It ships with the pentesting toolset (nmap, Metasploit, dirb, gobuster, seclists, ...) plus the CAI framework, and runs without an Alias Robotics license (`CAI_LICENSE_OFF=1`).
+
+### Requirements
+
+- Docker Compose
+- An LLM API key. CAI supports any provider through [LiteLLM](https://github.com/BerriAI/litellm); a local container runs fine with an [OpenCode Go](https://opencode.ai/docs/go/) key (OpenAI-compatible endpoint).
+
+### Configuration
+
+```
+cp cai/env.example cai/.env
+```
+
+Then edit `cai/.env` and fill in the API key of the provider you want to use:
+
+| Provider | `CAI_MODEL` | Key variable |
+|---|---|---|
+| OpenCode Go (OpenAI-compatible) | `openai/deepseek-v4-flash` | `OPENAI_API_KEY` + `OPENAI_API_BASE=https://opencode.ai/zen/go/v1` |
+| DeepSeek | `deepseek/deepseek-chat` | `DEEPSEEK_API_KEY` |
+| OpenAI | `openai/gpt-4o` | `OPENAI_API_KEY` |
+| Anthropic | `anthropic/claude-sonnet-4.5` | `ANTHROPIC_API_KEY` |
+| Ollama (local) | `ollama/qwen2.5:72b` | `OLLAMA_API_BASE` |
+
+`cai/.env` is gitignored; only `cai/env.example` is committed.
+
+### Usage
+
+Start the agent standalone (it does not start with the factory):
+
+```
+docker compose up -d cai
+```
+
+Run a penetration test (interactive):
+
+```
+docker compose exec -it cai cai "Enumerate both /24 subnets 172.18.0.0/24 and 172.19.0.0/24"
+```
+
+Or run it headless, feeding a prompt and letting the agent execute:
+
+```
+docker compose exec -T cai cai "Scan 172.18.0.0/24 and 172.19.0.0/24, list every host with open ports and identified services (Modbus, MQTT, HTTP, ...)"
+```
+
+Targets are reachable by service name (`openplc`, `hmi`, `mosquitto`, `opensearch`) or by IP. Agent output is persisted under `cai/workspace/` (gitignored).
+
+**Agent types** (set `CAI_AGENT_TYPE` in `cai/.env`): `redteam_agent` (default), `bug_bounter_agent`, `blueteam_agent`, `network_security_analyzer_agent`, ...
+
+> **Note:** keep the agent's command output small (e.g. `nmap -n` with `-oG` result files) — CAI 0.5.10 can hang on very large tool outputs.
+
 ## Simulators configuration
 
 Each simulator has its configuration file that will tell it how it should connect and how it should act.
