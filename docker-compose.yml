@@ -11,6 +11,7 @@ services:
       - entrypoint.sh
     networks:
       - ot
+      - oraculo
     depends_on:
       - openplc
       - mosquitto
@@ -26,6 +27,7 @@ services:
       - entrypoint.sh
     networks:
       - ot
+      - oraculo
   mosquitto:
     image: eclipse-mosquitto
     ports:
@@ -34,6 +36,7 @@ services:
       - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
     networks:
       - simulators
+      - oraculo
   tequila:
     image: python:3.9-slim
     volumes:
@@ -421,6 +424,7 @@ services:
       - 9300:9300/tcp
     networks:
       - simulators
+      - oraculo
   opensearch-dashboards:
     image: opensearchproject/opensearch-dashboards:1.3.1
     ports:
@@ -452,10 +456,34 @@ services:
     networks:
       - ot
       - simulators
+  # Oraculo factory assistant (read-only Q&A + configuration verification).
+  # Start standalone:   docker compose up -d oraculo
+  # Interactive REPL:   docker compose exec -it oraculo oraculo
+  # One-shot question:  docker compose exec -T oraculo oraculo "your question"
+  # Isolated on its own network: cai and students cannot reach it.
+  oraculo:
+    build: ./oraculo
+    stdin_open: true
+    tty: true
+    env_file:
+      - path: oraculo/.env
+        required: false
+    volumes:
+      - ./FACTORY.md:/app/knowledge/factory.md:ro
+      - ./README.md:/app/knowledge/readme.md:ro
+      - ./OpenPLC/README.md:/app/knowledge/openplc_readme.md:ro
+      - ./FUXA-HMI/README.md:/app/knowledge/fuxa_hmi_readme.md:ro
+      - ./buggable-cli/README.md:/app/knowledge/buggable_cli_readme.md:ro
+      - ./mosquitto/mosquitto.conf:/app/knowledge/mosquitto.conf:ro
+      - ./simulators/flamingmoes:/app/knowledge/flamingmoes:ro
+    networks:
+      - oraculo
 networks:
   ot:
     driver: bridge
     driver_opts:
       com.docker.network.bridge.name: br_ot_network
   simulators:
+    driver: bridge
+  oraculo:
     driver: bridge
