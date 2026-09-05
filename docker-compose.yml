@@ -470,6 +470,7 @@ services:
         required: false
     volumes:
       - ./FACTORY.md:/app/knowledge/factory.md:ro
+      - ./oraculo/knowledge/lab_guide.md:/app/knowledge/lab_guide.md:ro
       - ./README.md:/app/knowledge/readme.md:ro
       - ./OpenPLC/README.md:/app/knowledge/openplc_readme.md:ro
       - ./FUXA-HMI/README.md:/app/knowledge/fuxa_hmi_readme.md:ro
