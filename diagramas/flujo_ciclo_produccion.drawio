@@ -1,0 +1,167 @@
+<mxfile host="Electron">
+  <diagram id="page-1" name="CicloProduccion">
+    <mxGraphModel dx="1304" dy="911" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;strokeColor=none;fillColor=none;fontSize=18;fontStyle=1;html=1;" value="Ciclo de producción de la fábrica Flaming Moe&#39;s" vertex="1">
+          <mxGeometry height="30" width="720" x="310" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="start" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="Arranque&#xa;(modo automático)" vertex="1">
+          <mxGeometry height="50" width="160" x="80" y="105" as="geometry" />
+        </mxCell>
+        <mxCell id="p1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;b&gt;1. Espera / preparación&lt;/b&gt;&lt;br&gt;vaciar y enfriar los depósitos a 6 °C" vertex="1">
+          <mxGeometry height="55" width="180" x="300" y="103" as="geometry" />
+        </mxCell>
+        <mxCell id="d1" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="¿Depósitos vacíos&#xa;y a 6 °C?" vertex="1">
+          <mxGeometry height="65" width="140" x="550" y="97" as="geometry" />
+        </mxCell>
+        <mxCell id="p2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;b&gt;2. Llenado&lt;/b&gt;&lt;br&gt;llenar los depósitos de mezcla hasta 90" vertex="1">
+          <mxGeometry height="55" width="180" x="760" y="103" as="geometry" />
+        </mxCell>
+        <mxCell id="d2" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="¿Ambos depósitos&#xa;≥ 90 de capacidad?" vertex="1">
+          <mxGeometry height="73" width="150" x="770" y="247" as="geometry" />
+        </mxCell>
+        <mxCell id="p3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;b&gt;3. Calentado&lt;/b&gt;&lt;br&gt;llevar los depósitos a 20 °C (mezclado)" vertex="1">
+          <mxGeometry height="55" width="180" x="530" y="253" as="geometry" />
+        </mxCell>
+        <mxCell id="d3" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="¿Ambos depósitos&#xa;a 20 °C?" vertex="1">
+          <mxGeometry height="65" width="140" x="320" y="247" as="geometry" />
+        </mxCell>
+        <mxCell id="p4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;b&gt;4. Espera del colector&lt;/b&gt;&lt;br&gt;mantener los depósitos a 20 °C" vertex="1">
+          <mxGeometry height="55" width="180" x="70" y="253" as="geometry" />
+        </mxCell>
+        <mxCell id="d4" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="¿Colector vacío&#xa;y a 20 °C?" vertex="1">
+          <mxGeometry height="65" width="140" x="90" y="397" as="geometry" />
+        </mxCell>
+        <mxCell id="p5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;b&gt;5. Vaciado&lt;/b&gt;&lt;br&gt;verter los depósitos en el colector" vertex="1">
+          <mxGeometry height="55" width="180" x="300" y="403" as="geometry" />
+        </mxCell>
+        <mxCell id="d5" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="¿Depósitos 1 y 2&#xa;vaciados?" vertex="1">
+          <mxGeometry height="65" width="140" x="550" y="397" as="geometry" />
+        </mxCell>
+        <mxCell id="p6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;b&gt;6. Enfriado&lt;/b&gt;&lt;br&gt;enfriar la mezcla hasta 6 °C (servicio)" vertex="1">
+          <mxGeometry height="55" width="180" x="760" y="403" as="geometry" />
+        </mxCell>
+        <mxCell id="d6" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="¿Colector a 6 °C?" vertex="1">
+          <mxGeometry height="65" width="140" x="780" y="547" as="geometry" />
+        </mxCell>
+        <mxCell id="p7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;b&gt;7. Embotellado&lt;/b&gt;&lt;br&gt;abrir el colector y mover la cinta hasta agotarlo" vertex="1">
+          <mxGeometry height="55" width="180" x="530" y="553" as="geometry" />
+        </mxCell>
+        <mxCell id="d7" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="¿Colector vacío?" vertex="1">
+          <mxGeometry height="65" width="140" x="320" y="547" as="geometry" />
+        </mxCell>
+        <mxCell id="end" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" value="Vuelta al estado 1&#xa;(ciclo continuo)" vertex="1">
+          <mxGeometry height="50" width="160" x="80" y="555" as="geometry" />
+        </mxCell>
+        <mxCell id="e-start" edge="1" parent="1" source="start" style="edgeStyle=orthogonalEdgeStyle;html=1;" target="p1" value="bobina 1599 = 0">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="159.96" y="189.96" />
+              <mxPoint x="389.96" y="189.96" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-p1d1" edge="1" parent="1" source="p1" style="edgeStyle=orthogonalEdgeStyle;html=1;" target="d1" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-d1p2" edge="1" parent="1" source="d1" style="edgeStyle=orthogonalEdgeStyle;html=1;" target="p2" value="Sí">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-p2d2" edge="1" parent="1" source="p2" style="edgeStyle=orthogonalEdgeStyle;html=1;" target="d2" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-d2p3" edge="1" parent="1" source="d2" style="edgeStyle=orthogonalEdgeStyle;html=1;" target="p3" value="Sí">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-p3d3" edge="1" parent="1" source="p3" style="edgeStyle=orthogonalEdgeStyle;html=1;" target="d3" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-d3p4" edge="1" parent="1" source="d3" style="edgeStyle=orthogonalEdgeStyle;html=1;" target="p4" value="Sí">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-p4d4" edge="1" parent="1" source="p4" style="edgeStyle=orthogonalEdgeStyle;html=1;" target="d4" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-d4p5" edge="1" parent="1" source="d4" style="edgeStyle=orthogonalEdgeStyle;html=1;" target="p5" value="Sí">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-p5d5" edge="1" parent="1" source="p5" style="edgeStyle=orthogonalEdgeStyle;html=1;" target="d5" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-d5p6" edge="1" parent="1" source="d5" style="edgeStyle=orthogonalEdgeStyle;html=1;" target="p6" value="Sí">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-p6d6" edge="1" parent="1" source="p6" style="edgeStyle=orthogonalEdgeStyle;html=1;" target="d6" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-d6p7" edge="1" parent="1" source="d6" style="edgeStyle=orthogonalEdgeStyle;html=1;" target="p7" value="Sí">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-p7d7" edge="1" parent="1" source="p7" style="edgeStyle=orthogonalEdgeStyle;html=1;" target="d7" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-d7end" edge="1" parent="1" source="d7" style="edgeStyle=orthogonalEdgeStyle;html=1;" target="end" value="Sí">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-d1no" edge="1" parent="1" source="d1" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.2;entryDx=0;entryDy=0;" target="p1" value="No">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="620" y="70" />
+              <mxPoint x="480" y="70" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-d2no" edge="1" parent="1" source="d2" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="p2" value="No">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="960" y="280" />
+              <mxPoint x="960" y="130" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-d3no" edge="1" parent="1" source="d3" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="p3" value="No">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="390" y="215" />
+              <mxPoint x="620" y="215" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-d4no" edge="1" parent="1" source="d4" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="p4" value="No">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="50" y="430" />
+              <mxPoint x="50" y="280" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-d5no" edge="1" parent="1" source="d5" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="p5" value="No">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="620" y="370" />
+              <mxPoint x="390" y="370" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-d6no" edge="1" parent="1" source="d6" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="p6" value="No">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="960" y="580" />
+              <mxPoint x="960" y="430" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-d7no" edge="1" parent="1" source="d7" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="p7" value="No">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="390" y="520.05" />
+              <mxPoint x="620" y="520.05" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
