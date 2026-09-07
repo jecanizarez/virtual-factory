@@ -32,7 +32,7 @@ PROGRAM flamingmoes
     mix_tank1_max_pressure AT %QW103 : UINT;
     mix_tank1_min_pressure AT %QW104 : UINT;
     mix_tank1_pressure AT %QW105 : UINT;
-    mix_tank1_max_temp AT %QW106 : UINT;
+    mix_tank1_max_temp AT %QW106 : INT;
     mix_tank1_min_temp AT %QW107 : INT;
     mix_tank1_temp AT %QW108 : INT;
     mix_tank1_heat_cool_level AT %QW109 : INT;
