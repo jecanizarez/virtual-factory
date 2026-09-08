@@ -1,0 +1,216 @@
+<mxfile host="Electron">
+  <diagram id="vf-arch-2026" name="Virtual Factory - Architecture">
+    <mxGraphModel dx="1381" dy="965" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#000000;" value="&lt;b&gt;Flaming Moe&#39;s Virtual Factory — Architecture &amp; Tecnologías&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 10px; color: #000000;&quot;&gt;Docker Compose · OT / Simulators / Oraculo networks · Modbus TCP + MQTT + HTTP&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="1200" x="200" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="legend" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;" value="&lt;b&gt;Leyenda:&lt;/b&gt; &amp;nbsp; &lt;font style=&quot;background:#dae8fc;&quot;&gt;&amp;nbsp; HMI &amp;nbsp;&lt;/font&gt; &amp;nbsp; &lt;font style=&quot;background:#fff2cc;&quot;&gt;&amp;nbsp; PLC / OT &amp;nbsp;&lt;/font&gt; &amp;nbsp; &lt;font style=&quot;background:#d5e8d4;&quot;&gt;&amp;nbsp; Simulación (Python) &amp;nbsp;&lt;/font&gt; &amp;nbsp; &lt;font style=&quot;background:#e1d5e7;&quot;&gt;&amp;nbsp; Mensajería &amp;nbsp;&lt;/font&gt; &amp;nbsp; &lt;font style=&quot;background:#f8cecc;&quot;&gt;&amp;nbsp; Observabilidad &amp;nbsp;&lt;/font&gt; &amp;nbsp; &lt;font style=&quot;background:#ccf2e6;&quot;&gt;&amp;nbsp; IA / Seguridad &amp;nbsp;&lt;/font&gt; &amp;nbsp; ── Modbus TCP :502 &amp;nbsp; ┈┈ MQTT :1883 &amp;nbsp; - - HTTP" vertex="1">
+          <mxGeometry height="20" width="1520" x="40" y="55" as="geometry" />
+        </mxCell>
+        <mxCell id="net-ot" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=12;spacingTop=4;fontStyle=1;fontColor=#000000;" value="NETWORK &#39;ot&#39;  (br_ot_network  172.18.0.0/24)  —  Modbus TCP" vertex="1">
+          <mxGeometry height="210" width="1560" x="20" y="85" as="geometry" />
+        </mxCell>
+        <mxCell id="net-sim" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=12;spacingTop=4;fontStyle=1;fontColor=#000000;" value="NETWORK &#39;simulators&#39;  —  MQTT bus + Modbus clients" vertex="1">
+          <mxGeometry height="540" width="1560" x="20" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="net-oraculo" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ccf2e6;strokeColor=#3a9e7c;strokeWidth=2;dashed=1;verticalAlign=top;align=left;spacingLeft=12;spacingTop=4;fontStyle=1;fontColor=#000000;" value="NETWORK &#39;oraculo&#39;  (isolated bridge — solo OpenPLC / HMI / Mosquitto / OpenSearch)" vertex="1">
+          <mxGeometry height="120" width="1560" x="20" y="865" as="geometry" />
+        </mxCell>
+        <mxCell id="fuxa" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;&lt;b&gt;FUXA HMI&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Node.js · FUXA&lt;br&gt;Modbus TCP &lt;b&gt;Client&lt;/b&gt; (slave 1)&lt;br&gt;HTTP :1881&lt;br&gt;&lt;i&gt;MainView + manual_mode coil 1599&lt;/i&gt;&lt;/font&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="110" width="220" x="50" y="115" as="geometry" />
+        </mxCell>
+        <mxCell id="openplc" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" value="&lt;span style=&quot;color: rgb(0, 0, 10);&quot;&gt;&lt;b&gt;OpenPLC_V3&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;IEC 61131-3 ST · &lt;b&gt;script.st&lt;/b&gt;&lt;br&gt;Modbus TCP &lt;b&gt;Server&lt;/b&gt; :502 / HTTP :8080&lt;br&gt;Coils 800-823 / Regs 100-129&lt;br&gt;&lt;i&gt;Sin lógica — solo echo (x:=x)&lt;/i&gt;&lt;/font&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="110" width="240" x="330" y="115" as="geometry" />
+        </mxCell>
+        <mxCell id="cai" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;dashed=1;" value="&lt;b&gt;CAI Agent&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Kali + CAI framework + LiteLLM&lt;br&gt;nmap / Metasploit / gobuster&lt;br&gt;RedTeam / BlueTeam&lt;br&gt;Networks: ot + simulators&lt;/font&gt;" vertex="1">
+          <mxGeometry height="110" width="210" x="630" y="115" as="geometry" />
+        </mxCell>
+        <mxCell id="user" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;fontSize=11;" value="&lt;b&gt;Operador / Estudiante&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Browser: FUXA :1881&lt;br&gt;OpenPLC :8080&lt;br&gt;Dashboards :5601&lt;/font&gt;" vertex="1">
+          <mxGeometry height="110" width="200" x="900" y="115" as="geometry" />
+        </mxCell>
+        <mxCell id="sniffer" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;dashed=1;" value="&lt;b&gt;Sniffer / tcpdump&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Captura tráfico OT&lt;br&gt;docker-stats-logger&lt;/font&gt;" vertex="1">
+          <mxGeometry height="110" width="180" x="1150" y="115" as="geometry" />
+        </mxCell>
+        <mxCell id="opensearch-info" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#000000;" value="OpenSearch + Dashboards" vertex="1">
+          <mxGeometry height="40" width="160" x="1380" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="mosquitto" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" value="&lt;b&gt;Mosquitto&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;eclipse-mosquitto&lt;br&gt;MQTT Broker :1883&lt;br&gt;&lt;i&gt;output_level / blocked&lt;br&gt;entre simuladores&lt;/i&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="110" width="200" x="50" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="sim-cluster" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;verticalAlign=top;align=center;fontStyle=1;fontSize=10;" value="SIMULADORES — Python 3.9-slim  ·  1 container / JSON  ·  pymodbus (industrial) + paho-mqtt (simulator)  ·  tick 5s" vertex="1">
+          <mxGeometry height="430" width="1260" x="290" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="taps" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#00000A;fontSize=10;" value="&lt;span style=&quot;color: rgb(0, 0, 10);&quot;&gt;&lt;b&gt;Taps (fuentes)&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;tequila, peppermint, mintcream&lt;br&gt;brandy, gin, coughsyrup&lt;br&gt;&lt;i&gt;tap.py · output_level=1/tick&lt;/i&gt;&lt;/font&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="80" width="180" x="310" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="valves-src" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#82b366;fontSize=10;" value="&lt;b&gt;Válvulas fuente&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;*valve.json · valve.py&lt;br&gt;Coils 800-811 (put_/status)&lt;br&gt;MQTT: bloquea upstream si cerrada&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="190" x="530" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="mixtank1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" value="&lt;b&gt;MIX TANK 1&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;tank.py · mixtank1.json&lt;br&gt;Cap 0→100 · Temp 6°C&lt;br&gt;Regs 100-109 (QW100..109)&lt;br&gt;heat_cool_level R109&lt;/font&gt;" vertex="1">
+          <mxGeometry height="90" width="180" x="760" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="mixtank2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" value="&lt;b&gt;MIX TANK 2&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;tank.py · mixtank2.json&lt;br&gt;Cap 0→100 · buggable&lt;br&gt;Regs 110-119 (QW110..119)&lt;br&gt;heat_cool_level R119&lt;/font&gt;" vertex="1">
+          <mxGeometry height="90" width="180" x="970" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="tankvalves" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#82b366;fontSize=10;" value="&lt;b&gt;Válvulas tanque&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;mixtank1valve / mixtank2valve&lt;br&gt;Coils 812-815&lt;br&gt;valve.py&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="170" x="1180" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="recolector" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" value="&lt;b&gt;RECOLECTOR&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;tank.py · recolector.json&lt;br&gt;Cap 0→200 · Temp control&lt;br&gt;Regs 120-129 (QW120..129)&lt;br&gt;heat_cool_level R129&lt;/font&gt;" vertex="1">
+          <mxGeometry height="90" width="180" x="670" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="recolectorvalve" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#82b366;fontSize=10;" value="&lt;b&gt;recolectorvalve&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;valve.py · Coil 816/817&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="170" x="970" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="conveyor" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" value="&lt;b&gt;Conveyor Belt 1&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;conveyorbelt.py · 7 slots&lt;br&gt;Coil 818 belt1_onoff&lt;br&gt;buggable&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="180" x="1170" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="drain" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" value="&lt;b&gt;DRAIN&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;drain.py&lt;br&gt;Fin de línea&lt;br&gt;(embotellado)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="140" x="1380" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="process" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;fontSize=10;" value="&lt;b&gt;FlamingMoesProcess&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;Python Controller · flamingmoeprocess.py&lt;br&gt;7 estados: WAIT→FILL→HEAT→...→FILL_BOTTLES&lt;br&gt;Escribe coils 800-818 + heat_cool_level&lt;br&gt;&lt;i&gt;Solo si manual_mode=0 (coil 1599)&lt;/i&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="110" width="340" x="310" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="buggable" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;dashed=1;fontSize=10;" value="&lt;b&gt;buggable-cli&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:8px&quot;&gt;Python · MQTT&lt;br&gt;Inyecta anomalías&lt;br&gt;(anomalies.json)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="110" width="160" x="700" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="logger" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=9;dashed=1;" value="&lt;b&gt;docker-stats-logger&lt;/b&gt; + simulación logs" vertex="1">
+          <mxGeometry height="50" width="200" x="900" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="opensearch" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" value="&lt;b&gt;OpenSearch :9200&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;opensearchproject/opensearch:1.3.1&lt;br&gt;Índices: factory-log-tank1/2&lt;br&gt;&lt;i&gt;logging.type=opensearch&lt;/i&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="220" x="50" y="890" as="geometry" />
+        </mxCell>
+        <mxCell id="dashboards" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" value="&lt;b&gt;OpenSearch Dashboards :5601&lt;/b&gt;" vertex="1">
+          <mxGeometry height="80" width="220" x="300" y="890" as="geometry" />
+        </mxCell>
+        <mxCell id="oraculo" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ccf2e6;strokeColor=#3a9e7c;fontSize=10;" value="&lt;b&gt;Oráculo&lt;/b&gt;  (solo lectura)&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Python + LiteLLM · read-only tools&lt;br&gt;read_modbus / check_services&lt;br&gt;read_config_file · isolated&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="220" x="580" y="890" as="geometry" />
+        </mxCell>
+        <mxCell id="e-tap-valve" edge="1" parent="1" source="taps" style="endArrow=block;html=1;strokeColor=#2d5a27;entryX=0;entryY=0.5;exitX=1;exitY=0.5;" target="valves-src" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-valve-tank1" edge="1" parent="1" source="valves-src" style="endArrow=block;html=1;strokeColor=#2d5a27;dashed=0;fontSize=8;fontColor=#000000;labelBackgroundColor=#ffffff;" target="mixtank1" value="flujo">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-valve-tank2" edge="1" parent="1" source="valves-src" style="endArrow=block;html=1;strokeColor=#2d5a27;entryX=0;entryY=0.7;exitX=0.7;exitY=0.5;" target="mixtank2" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="620" y="485" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-tank-valve" edge="1" parent="1" source="mixtank1" style="endArrow=block;html=1;strokeColor=#2d5a27;" target="tankvalves" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-tank2-valve2" edge="1" parent="1" source="mixtank2" style="endArrow=block;html=1;strokeColor=#2d5a27;" target="tankvalves" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-valve-recol" edge="1" parent="1" source="tankvalves" style="endArrow=block;html=1;strokeColor=#b85450;strokeWidth=2;" target="recolector" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1265" y="560" />
+              <mxPoint x="850" y="560" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-recol-valve" edge="1" parent="1" source="recolector" style="endArrow=block;html=1;strokeColor=#b85450;" target="recolectorvalve" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-valve-conv" edge="1" parent="1" source="recolectorvalve" style="endArrow=block;html=1;strokeColor=#6c8ebf;strokeWidth=2;" target="conveyor" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-conv-drain" edge="1" parent="1" source="conveyor" style="endArrow=block;html=1;strokeColor=#6c8ebf;fontSize=8;fontColor=#000000;" target="drain" value="botellas">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-fuxa-plc" edge="1" parent="1" source="fuxa" style="endArrow=block;html=1;strokeColor=#d6b656;dashed=1;fontSize=8;labelBackgroundColor=#fff2cc;" target="openplc" value="Modbus TCP :502">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-plc-sim" edge="1" parent="1" source="openplc" style="endArrow=block;html=1;strokeColor=#d6b656;dashed=1;fontSize=8;labelBackgroundColor=#fff2cc;" target="sim-cluster" value="Modbus TCP :502  (coils+regs)">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="450" y="280" />
+              <mxPoint x="500" y="340" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-process-plc" edge="1" parent="1" source="process" style="endArrow=block;html=1;strokeColor=#d6b656;dashed=1;fontSize=8;labelBackgroundColor=#fff2cc;" target="openplc" value="write coils/regs">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="480" y="750" />
+              <mxPoint x="250" y="750" />
+              <mxPoint x="250" y="250" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-mqtt-bus" edge="1" parent="1" source="mosquitto" style="endArrow=block;html=1;strokeColor=#9673a6;dashed=1;strokeWidth=1;fontSize=8;labelBackgroundColor=#e1d5e7;" target="taps" value="MQTT :1883  (output_level / blocked)">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="150" y="520" />
+              <mxPoint x="350" y="520" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-mqtt-bug" edge="1" parent="1" source="buggable" style="endArrow=block;html=1;strokeColor=#9673a6;dashed=1;fontSize=8;" target="mosquitto" value="MQTT inject">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="620" y="580" />
+              <mxPoint x="150" y="580" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-user-fuxa" edge="1" parent="1" source="user" style="endArrow=block;html=1;strokeColor=#6c8ebf;fontSize=8;" target="fuxa" value="HTTP :1881">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="790" y="140" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-user-plc" edge="1" parent="1" source="user" style="endArrow=block;html=1;strokeColor=#d6b656;fontSize=8;rounded=0;curved=1;" target="openplc" value="HTTP :8080">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="820" y="250" />
+              <mxPoint x="730" y="260" />
+              <mxPoint x="640" y="250" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-log-os" edge="1" parent="1" source="sim-cluster" style="endArrow=block;html=1;strokeColor=#b85450;dashed=1;fontSize=8;" target="opensearch" value="logs">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="300" y="780" />
+              <mxPoint x="160" y="780" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-os-dash" edge="1" parent="1" source="opensearch" style="endArrow=block;html=1;strokeColor=#b85450;fontSize=8;" target="dashboards" value=":9200">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-oraculo-plc" edge="1" parent="1" source="oraculo" style="endArrow=block;html=1;strokeColor=#3a9e7c;dashed=1;fontSize=8;labelBackgroundColor=#ccf2e6;" target="openplc" value="read_modbus (RO)">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="690" y="820" />
+              <mxPoint x="450" y="820" />
+              <mxPoint x="450" y="230" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-oraculo-mqtt" edge="1" parent="1" source="oraculo" style="endArrow=block;html=1;strokeColor=#3a9e7c;dashed=1;fontSize=8;" target="mosquitto" value="check_services">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="580" y="860" />
+              <mxPoint x="150" y="860" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="footer" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;" value="&lt;font style=&quot;font-size:8px; color:#000000;&quot;&gt;Tecnologías: Docker Compose · Python 3.9 (simuladores) · OpenPLC_V3 (ST) · FUXA (Node.js) · Eclipse Mosquitto (MQTT) · OpenSearch 1.3.1 · CAI/LiteLLM ·  Archivos clave: docker-compose.yml · simulators/flamingmoes/*.json · simulators/src/domain/simulators/{tank,valve,tap,conveyorbelt}.py · simulators/flamingmoes/openplc/config/script.st · FACTORY.md&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="1520" x="40" y="1005" as="geometry" />
+        </mxCell>
+        <mxCell id="note-manual" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;fontColor=#000000;" value="&lt;b&gt;manual_mode coil 1599 (%QX199.7)&lt;/b&gt;&lt;br&gt;0=Automático (process controla)&lt;br&gt;1=Manual (FUXA controla)" vertex="1">
+          <mxGeometry height="30" width="220" x="330" y="235" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

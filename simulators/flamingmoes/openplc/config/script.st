@@ -18,12 +18,12 @@ PROGRAM flamingmoes
     mixtank2_valve_status AT %QX101.7 : BOOL;
     put_recolector_valve_status AT %QX102.0 : BOOL;
     recolector_valve_status AT %QX102.1 : BOOL;
-    put_dispenservalve1_status AT %QX102.2 : BOOL;
-    dispenservalve1_status AT %QX102.3 : BOOL;
-    put_dispenservalve2_status AT %QX102.4 : BOOL;
-    dispenservalve2_status AT %QX102.5 : BOOL;
-    put_dispenservalve3_status AT %QX102.6 : BOOL;
-    dispenservalve3_status AT %QX102.7 : BOOL;
+    put_belt_onoff AT %QX102.2 : BOOL;
+    belt_onoff AT %QX102.3 : BOOL;
+    belt_availslot1 AT %QX102.4 : BOOL;
+    belt_availslot2 AT %QX102.5 : BOOL;
+    belt_availslot3 AT %QX102.6 : BOOL;
+    belt_availslot4 AT %QX102.7 : BOOL;
     manual_mode AT %QX199.7 : BOOL;
 
     mix_tank1_capacity AT %QW100 : UINT;
@@ -32,7 +32,7 @@ PROGRAM flamingmoes
     mix_tank1_max_pressure AT %QW103 : UINT;
     mix_tank1_min_pressure AT %QW104 : UINT;
     mix_tank1_pressure AT %QW105 : UINT;
-    mix_tank1_max_temp AT %QW106 : UINT;
+    mix_tank1_max_temp AT %QW106 : INT;
     mix_tank1_min_temp AT %QW107 : INT;
     mix_tank1_temp AT %QW108 : INT;
     mix_tank1_heat_cool_level AT %QW109 : INT;
@@ -80,12 +80,12 @@ PROGRAM flamingmoes
     mixtank2_valve_status := mixtank2_valve_status;
     put_recolector_valve_status := put_recolector_valve_status;
     recolector_valve_status := recolector_valve_status;
-    put_dispenservalve1_status := put_dispenservalve1_status;
-    dispenservalve1_status := dispenservalve1_status;
-    put_dispenservalve2_status := put_dispenservalve2_status;
-    dispenservalve2_status := dispenservalve2_status;
-    put_dispenservalve3_status := put_dispenservalve3_status;
-    dispenservalve3_status := dispenservalve3_status;
+    put_belt_onoff := put_belt_onoff;
+    belt_onoff := belt_onoff;
+    belt_availslot1 := belt_availslot1;
+    belt_availslot2 := belt_availslot2;
+    belt_availslot3 := belt_availslot3;
+    belt_availslot4 := belt_availslot4;
     manual_mode := manual_mode;
 
     mix_tank1_capacity := mix_tank1_capacity;
